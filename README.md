@@ -11,7 +11,7 @@ ESX to QBCore. Originally converted by [M4RFY](https://github.com/M4RFY)
 * Optimizations 
 
 
-# Dependecnies | ps-dispatch
+# Dependencies | ps-dispatch
 
 * Add to ps-dispatch:client:events
 
