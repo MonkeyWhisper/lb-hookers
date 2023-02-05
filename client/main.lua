@@ -15,7 +15,6 @@ local HookerSpawned         = false
 local OnRouteToHooker       = false
 local HookerInCar           = false
 
--- Qbus Code
 local QBCore = exports['qb-core']:GetCoreObject()
 local PlayerData            = {}
 
@@ -299,40 +298,18 @@ end
 
 -- Blowjob Animation and Speech
 RegisterNetEvent("lb-hookers:startBlowjob")
-AddEventHandler("lb-hookers:startBlowjob", function()
-    local ped = PlayerPedId()
-    hookerAnim(Hooker,"oddjobs@towing","f_blow_job_loop")
-    playerAnim(ped,"oddjobs@towing","m_blow_job_loop")
+AddEventHandler("lb-hookers:startBlowjob", function(playerId, hookerServerId)
+    local playerPed = GetPlayerPed(playerId)
+    local hookerPed = GetPlayerPed(GetPlayerFromServerId(hookerServerId))
 
-    local speechArray = {
-        "Sex_Oral", 
-        "Sex_Oral", 
-        "Sex_Oral", 
-        "Sex_Oral_Fem", 
-        "Sex_Oral_Fem", 
-        "Sex_Finished", 
-        "Hooker_Offer_Again"
-    }
+    hookerAnim(hookerPed, "oddjobs@towing", "f_blow_job_loop")
+    playerAnim(playerPed, "oddjobs@towing", "m_blow_job_loop")
 
-    QBCore.Functions.Progressbar("bj_with_hooker", "Enjoying the moment...", 35000, true, true, {
-        disableMovement = false,
-        disableCarMovement = true,
-        disableMouse = false,
-        disableCombat = true,
-    })
+    Citizen.Wait(35000)
 
-    for i=1, #speechArray do
-        local speech = speechArray[i]
-        local speechParam = "Speech_Params_Force_Shouted_Clear"
-
-        PlayAmbientSpeech1(Hooker, speech, speechParam)
-        Citizen.Wait(5000)
-    end
-
-    ClearPedTasks(ped)
-    ClearPedTasks(Hooker)
+    ClearPedTasks(playerPed)
+    ClearPedTasks(hookerPed)
     HookerInCar = true
-    TriggerServerEvent('hud:server:RelieveStress', math.random(50, 100))
 end)
 
 -- Sex Animation and Speech

@@ -26,3 +26,28 @@ AddEventHandler('lb-hookers:pay', function(boolean)
         TriggerClientEvent('lb-hookers:noMoney', src)
     end
 end)
+
+RegisterServerEvent("lb-hookers:startBlowjob")
+AddEventHandler("lb-hookers:startBlowjob", function(playerId)
+    local playerPed = GetPlayerPed(playerId)
+
+    TriggerClientEvent("lb-hookers:startBlowjob", playerId, playerPed, hookerPed)
+    TriggerServerEvent('hud:server:RelieveStress', playerId, math.random(50, 100))
+end)
+
+
+function hookerAnim(ped, animDict, animName)
+    RequestAnimDict(animDict)
+    while not HasAnimDictLoaded(animDict) do
+        Citizen.Wait(100)
+    end
+    TaskPlayAnim(ped, animDict, animName, 1.0, -1, -1, 49, 0, 0, 0, 0)
+end
+
+function playerAnim(ped, animDict, animName)
+    RequestAnimDict(animDict)
+    while not HasAnimDictLoaded(animDict) do
+        Citizen.Wait(100)
+    end
+    TaskPlayAnim(ped, animDict, animName, 1.0, -1, -1, 49, 0, 0, 0, 0)
+end
