@@ -3,10 +3,10 @@ ESX to QBCore. Originally converted by [M4RFY](https://github.com/M4RFY)
 
 # Additions
 
-* ps-dispatch alerts, 
-* Stress releif
-* Disabled movement, 
+* ps-dispatch alerts 
 * qb-target
+* Stress releif
+* Disabled movement
 * Whislte to hooker
 * Optimizations 
 
