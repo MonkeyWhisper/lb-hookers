@@ -1,10 +1,22 @@
-esx to qbcore originally converted by M4RFY https://github.com/M4RFY
-Additions (ps-dispatch alerts, stress releif, disabled movement, 3rd eye, whislte to hooker) and optimizations by me 
+# LB-Hookers
+ESX to QBCore. Originally converted by [M4RFY](https://github.com/M4RFY)
 
-//EVENTS//
-----------------------------------
-Add to ps-dispatch:client:events
------------------------------------
+# Additions
+
+* ps-dispatch alerts, 
+* Stress releif
+* Disabled movement, 
+* qb-target
+* Whislte to hooker
+* Optimizations 
+
+
+# Dependecnies | ps-dispatch
+
+* Add to ps-dispatch:client:events
+
+```
+
 local function SuspiciousActivity()
     local currentPos = GetEntityCoords(PlayerPedId())
     local locationInfo = getStreetandZone(currentPos)
@@ -57,17 +69,18 @@ local function SuspiciousActivity2(vehicle)
 end
 
 exports('SuspiciousActivity2', SuspiciousActivity2)
+```
+* Add to ps-dispatch:server:dispatchcodes
 
-//CODES//
------------------------------------------
---Add to ps-dispatch:server:dispatchcodes
------------------------------------------
+```
 ["susactivity"] =  {displayCode = '10-66', description = "Suspicious Activity", radius = 120.0, recipientList = {'police'}, blipSprite = 469, blipColour = 52, blipScale = 0, blipLength = 0.75, sound = "Lose_1st", sound2 = "GTAO_FM_Events_Soundset", offset = "true", blipflash = "false"},
-["susactivity2"] =  {displayCode = '10-66', description = "Solicitation", radius = 0, recipientList = {'police'}, blipSprite = 279, blipColour = 48, blipScale = 1.0, blipLength = 0.75, sound = "Lose_1st", sound2 = "GTAO_FM_Events_Soundset", offset = "false", blipflash = "false"},
 
-//LOCALES//
-----------------------------------------
---Add to ps-dispatch:locales
-----------------------------------------
+["susactivity2"] =  {displayCode = '10-66', description = "Solicitation", radius = 0, recipientList = {'police'}, blipSprite = 279, blipColour = 48, blipScale = 1.0, blipLength = 0.75, sound = "Lose_1st", sound2 = "GTAO_FM_Events_Soundset", offset = "false", blipflash = "false"},
+```
+* Add to ps-dispatch:locales
+
+```
 ['susactivity'] = "Suspicious Activity",
+
 ['susactivity2'] = "Solicitation in Progress",
+```
